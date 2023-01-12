@@ -22,4 +22,9 @@
 </table>
 
 <h2>Ｎew book</h2>
-ここに投稿フォーム
+<%= form_with model: Book.new do |f| %><!--入力フォームのベース部分-->
+  <%= f.text_field :title %><!--ここはBookモデルのtitleカラムとつながってる-->
+  <%= f.text_area :body %><!--Bookモデルのbodyカラムとつながってる-->
+  <%= f.submit '投稿' %><!--投稿ボタン-->
+<% end %>
+
