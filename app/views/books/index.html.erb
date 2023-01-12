@@ -14,28 +14,37 @@
 
   <tbody><!--表の本体-->
     <tr><!--行を生成するタグ-->
-    
+
       <td><!--表セルの内容(titleカラムのデータ全てを表示)-->
         <%= book.title %>
       </td>
-      
+
       <td><!--bodyｶﾗﾑのﾃﾞｰﾀ全てを表示)-->
         <%= book.body %>
       </td>
-      
+
           <!--book_pathは詳細画面のﾙｰﾄ､(book.id)で全ﾃﾞｰﾀのid取得？-->
       <td><%= link_to "Show", book_path(book.id) %></td><!--詳細画面のリンク-->
-      
+
       <td><%= link_to "Edit", edit_book_path(book.id) %></td><!--編集画面へのリンク-->
-      <td><%= link_to "Destroy", book_path(book.id), mehod: :delete %></td>
+      <td><%= link_to "Destroy", book_path(book.id), method: :delete %></td>
     </tr>
   </tbody><!--表本体終了-->
 </table><!--表全体終了-->
 
- <% end %><!--変数book(全てのﾃﾞｰﾀ)使用終了.-->
+ <% end %><!--ブロック変数book(全てのﾃﾞｰﾀ)使用終了.-->
 
 <h2>Ｎew book</h2><!--投稿フォーム-->
-<%= form_with model: @book do |f| %><!--入力フォームのベース部分-->
+<% if @book.errors.any? %><!--モデルにデータがなければ(@bookは入力ﾌｫｰﾑ-->
+  <%= @book.errors.count %>件のエラーが発生しました
+<ul>
+  <% @book.errors.full_messages.each do |message| %><!--ｴﾗｰ内容取得してmessageに格納-->
+    <li><%= message %></li><!--エラーメッセージを全て表示-->
+  <% end %><!--messageブロック変数終了-->
+</ul>
+<% end %><!--if文終了-->
+
+<%= form_with model: @book do |f| %><!--入力ﾌｫｰﾑのﾍﾞｰｽ部分createｱｸｼｮﾝ-->
   <%= f.text_field :title %><!--ここはBookモデルのtitleカラムとつながってる-->
   <%= f.text_area :body %><!--Bookモデルのbodyカラムとつながってる-->
   <%= f.submit 'Create Book' %><!--投稿ボタン-->

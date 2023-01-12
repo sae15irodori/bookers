@@ -33,7 +33,7 @@ class BooksController < ApplicationController
     book.destroy
     
     #一覧ページを再表示
-    render :index
+    redirect_to books_path
   end
  
   
@@ -55,10 +55,10 @@ class BooksController < ApplicationController
   
     #このbookは、Bookモデルから編集するidのデータを探す変数
     #更新ﾎﾞﾀﾝ押したら､更新したいidのﾃﾞｰﾀを取得してくれる
-    book = Book.find(params[id])
+    book = Book.find(params[:id])
     
     #上で探してきたデータを更新する
-    book.update(list_params)
+    book.update(book_params)
     
     #book_pathで詳細ページへ飛ぶという意味
     #book.idで上で取得したデータと同じidを指定している

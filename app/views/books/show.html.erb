@@ -1,5 +1,6 @@
 <p>Book was successfully created.</p>
-<strong>Title:投稿したデータのタイトルが表示される</strong>
-<strong>Body:投稿したデータの本文が表示される</strong>
 
-<%= link_to "Edit", edit_book_path
+<strong>Title:<%= @book.title %></strong><!--@bookはshowｱｸｼｮﾝで取得したidﾃﾞｰﾀ-->
+<strong>Body:<%= @book.body %></strong>
+
+<%= link_to "Edit", edit_book_path(book.id) %>
