@@ -14,11 +14,14 @@ class BooksController < ApplicationController
     #1.ﾌｫｰﾑに入力されたデータを受け取る
     @book = Book.new(book_params)#Book.newはフォームに入力されたデータを表している。このｱｸｼｮﾝ内での@book変数は､入力ﾌｫﾑｰで､入力したﾃﾞｰﾀの事
     
-    @book.save#2.ﾌｫｰﾑで入力したデータをdbに保存する(bookにデータ格納されてる)
+    if @book.save#2.ﾌｫｰﾑで入力したデータをdbに保存する(bookにデータ格納されてる)
+      #3.保存ﾃﾞｰﾀがあれば、book_pathで詳細ページへリダイレクト
+      #@book.idでid番目(その時)にﾌｫｰﾑ入力されたﾃﾞｰﾀの詳細ページへ飛ぶ
+      redirect_to book_path(@book.id)
     
-    #3.book_pathで詳細ページへリダイレクト
-    #@book.idでid番目(その時)にﾌｫｰﾑ入力されたﾃﾞｰﾀの詳細ページへ飛ぶ
-    redirect_to book_path(@book.id)
+    else#保存するものがなければ
+     render :index #一覧ページを再表示
+    end
   end
   
   def destroy#一覧ページでデータを削除する時に使われる

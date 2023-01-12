@@ -34,7 +34,7 @@
 
  <% end %><!--変数book(全てのﾃﾞｰﾀ)使用終了.-->
 
-<h2>Ｎew book</h2>
+<h2>Ｎew book</h2><!--投稿フォーム-->
 <%= form_with model: @book do |f| %><!--入力フォームのベース部分-->
   <%= f.text_field :title %><!--ここはBookモデルのtitleカラムとつながってる-->
   <%= f.text_area :body %><!--Bookモデルのbodyカラムとつながってる-->
