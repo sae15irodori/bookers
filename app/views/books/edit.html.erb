@@ -1,12 +1,14 @@
 <h1>Editing Book</h1>
 
-<%= form_with model: @book,url: book_path(@book.id), method: :put do |f| %><!--editアクションで取得した編集するidﾃﾞｰﾀをfに格納-->
+<%= form_with model: @book,url: book_path(@book.id), method: :put do |f| %><!--editアクションで取得した､編集するidﾃﾞｰﾀをfに格納-->
 
   <%= f.text_field :title %>
   <%= f.text_area :body %>
   
   <%= f.submit 'Update Book' %>
   
-  <% end %>
+  <% end %><!--変数f終了(特定のidデータ)-->
   
-  editのリンク indexへのリンク
+  
+  <%= link_to "Show", book_path(@book.id) %><!--@bookはeditｱｸｼｮﾝで取得した特定idのﾃﾞｰﾀ-->
+  <%= link_to "Back", books_path(@book.id) %><!--一覧ページへ飛ぶ-->

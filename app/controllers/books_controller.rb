@@ -20,22 +20,11 @@ class BooksController < ApplicationController
       redirect_to book_path(@book.id)
     
     else#保存するものがなければ
+     @books = Book.all
      render :index #一覧ページを再表示
     end
   end
   
-  def destroy#一覧ページでデータを削除する時に使われる
-    #bookはBookモデルから削除するidのデータを探す変数
-    #削除ボタン押したら削除したいidのﾃﾞｰﾀを取得してくれる
-    book = Book.find(params[:id])
-    
-    #上で探してきたデータを削除
-    book.destroy
-    
-    #一覧ページを再表示
-    redirect_to books_path
-  end
- 
   
   def show#詳細ページ
     #@bookにはcreateアクションの時にdbに保存したデータが入ってる
@@ -66,6 +55,18 @@ class BooksController < ApplicationController
   end
   
   
+  
+  def destroy#一覧ページでデータを削除する時に使われる
+    #bookはBookモデルから削除するidのデータを探す変数
+    #削除ボタン押したら削除したいidのﾃﾞｰﾀを取得してくれる
+    @book = Book.find(params[:id])
+    
+    #上で探してきたデータを削除
+    @book.destroy
+    
+    #一覧ページを再表示
+    redirect_to books_path
+  end
   
   
   private

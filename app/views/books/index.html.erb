@@ -9,9 +9,9 @@
       <th colspan="3"></th><!--この見出しの下にセルが３行分あるから３行結合する-->
     </tr><!--tr１つだからヘッダーは１行となる-->
   </thead>
-
+  
+  
 <% @books.each do |book| %><!--indexｱｸｼｮﾝで取得した全てのﾃﾞｰﾀを順番に表示してbook変数に格納しておく-->
-
   <tbody><!--表の本体-->
     <tr><!--行を生成するタグ-->
 
@@ -34,7 +34,16 @@
 
  <% end %><!--ブロック変数book(全てのﾃﾞｰﾀ)使用終了.-->
 
+
+
 <h2>Ｎew book</h2><!--投稿フォーム-->
+
+<%= form_with model: @book do |f| %><!--入力ﾌｫｰﾑのﾍﾞｰｽ部分createｱｸｼｮﾝ-->
+  <%= f.text_field :title %><!--ここはBookモデルのtitleカラムとつながってる-->
+  <%= f.text_area :body %><!--Bookモデルのbodyカラムとつながってる-->
+  <%= f.submit 'Create Book' %><!--投稿ボタン-->
+<% end %>
+
 <% if @book.errors.any? %><!--モデルにデータがなければ(@bookは入力ﾌｫｰﾑ-->
   <%= @book.errors.count %>件のエラーが発生しました
 <ul>
@@ -43,10 +52,3 @@
   <% end %><!--messageブロック変数終了-->
 </ul>
 <% end %><!--if文終了-->
-
-<%= form_with model: @book do |f| %><!--入力ﾌｫｰﾑのﾍﾞｰｽ部分createｱｸｼｮﾝ-->
-  <%= f.text_field :title %><!--ここはBookモデルのtitleカラムとつながってる-->
-  <%= f.text_area :body %><!--Bookモデルのbodyカラムとつながってる-->
-  <%= f.submit 'Create Book' %><!--投稿ボタン-->
-<% end %>
-

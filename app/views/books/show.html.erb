@@ -3,4 +3,8 @@
 <strong>Title:<%= @book.title %></strong><!--@bookはshowｱｸｼｮﾝで取得したidﾃﾞｰﾀ-->
 <strong>Body:<%= @book.body %></strong>
 
-<%= link_to "Edit", edit_book_path(book.id) %>
+
+<%= link_to "Edit", edit_book_path(@book.id) %><!--編集ﾍﾟｰｼﾞへ飛ぶ-->
+<!--@bookは、showｱｸｼｮﾝで取得した特定idのデータ。そのidを指定して飛ぶ-->
+
+<%= link_to "Back", books_path(@book.id) %><!--一覧画面へ戻る-->
