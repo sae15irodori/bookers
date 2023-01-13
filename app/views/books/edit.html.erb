@@ -1,7 +1,7 @@
 <h1>Editing Book</h1>
 
 <!--バリデーション-->
-<%if @book.errors.any? %>
+<% if @book.errors.any? %>
   <%= @book.errors.count %>error ※please fill in the blanks
   <ul>
     <% @book.errors.full_messages.each do |message| %>
