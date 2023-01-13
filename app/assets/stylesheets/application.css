@@ -24,25 +24,23 @@
 body{
   background-color: #fff;
   color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: verdana, arial, helvetica, sans-serif;/*左から優先的に適用されるﾕｰｻﾞｰのOSに合ったものを適用する*/
   font-size: 13px;
   line-height: 18px;
   margin: 33px;
 }
 
 h1{
-  display: block;
-    font-size: 2em;
-    margin-block-start: 0.67em;/*垂直方向のmargin(今は上)*/
-    margin-block-end: 0.67em;
-    margin-inline-start: 0px;/*水平方向のmargin(英語だから文字の左側)*/
-    margin-inline-end: 0px;
-    font-weight: bold;/*太字*/
+  font-size: 2em;
+  margin-block-start: 1em;/*垂直方向のmargin(今は上)*/
+  margin-block-end: 1em;
+  margin-inline-start: 0px;/*水平方向のmargin(英語だから文字の左側)*/
+  margin-inline-end: 0px;
+  font-weight: bold;/*太字*/
 }
 
-
-#notice {
-  color: green;
+a{
+  color: 666;/*リンクの文字色*/
 }
 
 table {
@@ -52,4 +50,9 @@ table {
     text-indent: initial;
     border-spacing: 2px;
     border-color: grey;
+}
+
+
+#notice {/*サクセスメッセージ*/
+  color: green;
 }

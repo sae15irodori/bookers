@@ -17,6 +17,7 @@ class BooksController < ApplicationController
     if @book.save#2.ﾌｫｰﾑで入力したデータをdbに保存する(bookにデータ格納されてる)
       #3.保存ﾃﾞｰﾀがあれば、book_pathで詳細ページへリダイレクト
       #@book.idでid番目(その時)にﾌｫｰﾑ入力されたﾃﾞｰﾀの詳細ページへ飛ぶ
+      flash[:notice] = "Book was successfully created."
       redirect_to book_path(@book.id)
     
     else#保存するものがなければ
@@ -46,12 +47,16 @@ class BooksController < ApplicationController
     #更新ﾎﾞﾀﾝ押したら､更新したいidのﾃﾞｰﾀを取得してくれる
     book = Book.find(params[:id])
     
-    #上で探してきたデータを更新する
-    book.update(book_params)
+    if book.update(book_params)#上で取得したﾃﾞｰﾀを更新する
+      #ﾃﾞｰﾀの存在がtrueであれば
+       flash[:notice] = "Book was successfully updated."#ﾌﾗｯｼｭメッセージ
+      redirect_to book_path(book.id)#book_pathで詳細ページへ飛ぶ｡book.idで上で取得したデータと同じidを指定してる
     
-    #book_pathで詳細ページへ飛ぶという意味
-    #book.idで上で取得したデータと同じidを指定している
-    redirect_to book_path(book.id)
+    else #ﾃﾞｰﾀの存在falseなら
+    @book = Book.find(params[:id])#editｱｸｼｮﾝに飛ぶからeditｱｸｼｮﾝを定義しなおす
+    render :edit#editページへ飛ぶ
+    end
+    
   end
   
   
