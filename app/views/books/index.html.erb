@@ -8,17 +8,17 @@
       <th colspan="3"></th><!--この見出しの下にセルが３行分あるから３行結合する-->
     </tr><!--tr１つだからヘッダーは１行となる-->
   </thead>
-  
-  
+
+
 <% @books.each do |book| %><!--indexｱｸｼｮﾝで取得した全てのﾃﾞｰﾀを順番に表示してbook変数に格納しておく-->
   <tbody><!--表の本体-->
     <tr><!--行を生成するタグ-->
 
-      <td><!--表セルの内容(titleカラムのデータ全てを表示)-->
+      <td class="list"><!--表セルの内容(titleカラムのデータ全てを表示)-->
         <%= book.title %>
       </td>
 
-      <td><!--bodyｶﾗﾑのﾃﾞｰﾀ全てを表示)-->
+      <td class="list"><!--bodyｶﾗﾑのﾃﾞｰﾀ全てを表示)-->
         <%= book.body %>
       </td>
 
@@ -29,27 +29,39 @@
       <td><%= link_to "Destroy", book_path(book.id), method: :delete %></td>
     </tr>
   </tbody><!--表本体終了-->
+ <% end %><!--ブロック変数book(全てのﾃﾞｰﾀ)使用終了.-->
 </table><!--表全体終了-->
 
- <% end %><!--ブロック変数book(全てのﾃﾞｰﾀ)使用終了.-->
 
 
-
-<h2>Ｎew book</h2><!--投稿フォーム-->
+<!--投稿フォーム-->
+  <h2>Ｎew book</h2>
 
 <!--バリデーション-->
-<% if @book.errors.any? %><!--モデルにデータがなければ(@bookは入力ﾌｫｰﾑ-->
-  <%= @book.errors.count %>error ※please fill in the blanks
-  <ul>
-  <% @book.errors.full_messages.each do |message| %><!--ｴﾗｰ内容取得してmessageに格納-->
-    <li><%= message %></li><!--エラーメッセージを全て表示-->
-  <% end %><!--messageブロック変数終了-->
-</ul>
-<% end %><!--if文終了-->
+  <% if @book.errors.any? %><!--モデルにデータがなければ(@bookは入力ﾌｫｰﾑ-->
+    <%= @book.errors.count %>error ※please fill in the blanks
+    <ul>
+      <% @book.errors.full_messages.each do |message| %><!--ｴﾗｰ内容取得してmessageに格納-->
+        <li><%= message %></li><!--エラーメッセージを全て表示-->
+      <% end %><!--messageブロック変数終了-->
+    </ul>
+  <% end %><!--if文終了-->
 
 <!--入力フォーム-->
-<%= form_with model: @book do |f| %><!--入力ﾌｫｰﾑのﾍﾞｰｽ部分createｱｸｼｮﾝ-->
-  <%= f.text_field :title %><!--ここはBookモデルのtitleカラムとつながってる-->
-  <%= f.text_area :body %><!--Bookモデルのbodyカラムとつながってる-->
-  <%= f.submit 'Create Book' %><!--投稿ボタン-->
-<% end %>
+  <%= form_with model: @book do |f| %><!--入力ﾌｫｰﾑのﾍﾞｰｽ部分createｱｸｼｮﾝ-->
+
+    <div class="field">
+      <h3>Title</h3>
+      <%= f.text_field :title %><!--ここはBookモデルのtitleカラムとつながってる-->
+    </div>
+
+    <div class="field">
+      <h3>Body</h3>
+      <%= f.text_area :body %><!--Bookモデルのbodyカラムとつながってる-->
+    </div>
+
+    <div class="field">
+      <%= f.submit 'Create Book' %><!--投稿ボタン-->
+    </div>
+    
+  <% end %>

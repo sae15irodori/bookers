@@ -20,39 +20,131 @@
   box-sizing: border-box;
 }
 
-
+/*共通設定*/
 body{
   background-color: #fff;
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;/*左から優先的に適用されるﾕｰｻﾞｰのOSに合ったものを適用する*/
   font-size: 13px;
   line-height: 18px;
-  margin: 33px;
+  margin: 35px;
 }
 
 h1{
   font-size: 2em;
   margin-block-start: 1em;/*垂直方向のmargin(今は上)*/
   margin-block-end: 1em;
-  margin-inline-start: 0px;/*水平方向のmargin(英語だから文字の左側)*/
-  margin-inline-end: 0px;
   font-weight: bold;/*太字*/
 }
 
 a{
-  color: 666;/*リンクの文字色*/
+  color: #555;/*リンクの文字色*/
 }
 
+a:hover{
+  background-color: #eaeaea;
+}
+
+p{
+  margin-block-start: 2em;
+  margin-block-end: 1.5em;
+  margin-inline-start: 3em
+}
+/*共通設定終了*/
+
+
+
+
+/*index一覧ページ*/
+/*表全体の設定*/
 table {
-    display: table;
-    border-collapse: separate;
+    display: table;/*ブロックレベル要素のまま横並びになる*/
+    border-collapse: separate;/*セルのボーダー表示形式セパレート*/
+    border-spacing: 2px;      /*セパレートの幅*/
     box-sizing: border-box;
-    text-indent: initial;
-    border-spacing: 2px;
     border-color: grey;
 }
 
 
-#notice {/*サクセスメッセージ*/
-  color: green;
+/*表の行の設定*/
+tr{
+  display: table-row;/*どういう意味？*/
+  vertical-align: inherit;/*意味ある？*/
+  border-color: inherit;/*親要素と同じgrey*/ 
 }
+
+
+
+/*表のヘッダー大枠*/
+thead{
+  display: table-header-group;/*どういう意味？*/
+  vertical-align: middle;/*縦方向の中央揃えヘッダー自体を？意味ある？*/
+  border-color: inherit;/*親要素と同じgrey*/
+}
+
+
+/*ヘッダーの内容*/
+th{
+  padding-bottom: 5px;
+  vertical-align: inherit;/*意味ある？*/
+}
+
+
+/*表本体大枠*/
+tbody{
+  display: table-row-group;/*どういう意味？*/
+  vertical-align: middle;
+  border-color: inherit;
+}
+
+
+td{
+  padding-bottom: 7px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+
+/*入力フォームの見出し*/
+h2{
+  font-size: 1.8em;
+  margin-block-start: 1em;/*垂直方向のmargin(今は上)*/
+  margin-block-end: 1em;
+  font-weight: bold;/*太字*/
+}
+
+/*入力欄*/
+.field{
+  margin-bottom: 10px;
+}
+
+h3{
+  font-weight: normal;
+  font-size: 1em;
+}
+
+#book_title{
+  padding: 0.3em;
+}
+
+#book_body{
+  padding: 0.5rem;
+  width: 300px;
+  height: 100px;
+}
+
+
+
+/*show詳細ページと編集ﾍﾟｰｼﾞのリンク*/
+span:last-child{/*これ適用されないのなんで？*/
+  padding-inline-start: 2em;
+  border-left: 1px solid #555;;
+}
+
+
+/*ﾌﾗｯｼｭﾒｯｾｰｼ*/
+#notice{
+  color: #cc3366;
+}
+
+

@@ -12,14 +12,22 @@
 
 <!--入力フォーム-->
 <%= form_with model: @book,url: book_path(@book.id), method: :put do |f| %><!--editアクションで取得した､編集するidﾃﾞｰﾀをfに格納-->
-
-  <%= f.text_field :title %>
-  <%= f.text_area :body %>
   
-  <%= f.submit 'Update Book' %>
+  <div class="field">
+    <h3>Title</h3>
+    <%= f.text_field :title %>
+  </div>
   
+  <div class="field">
+    <h3>Body</h3>
+    <%= f.text_area :body %>
+  </div>
+  
+  <div class="field">
+    <%= f.submit 'Update Book' %>
+  </div>
   <% end %><!--変数f終了(特定のidデータ)-->
   
   
-  <%= link_to "Show", book_path(@book.id) %><!--@bookはeditｱｸｼｮﾝで取得した特定idのﾃﾞｰﾀ-->
-  <%= link_to "Back", books_path(@book.id) %><!--一覧ページへ飛ぶ-->
+  <span><%= link_to "Show", book_path(@book.id) %></span><!--@bookはeditｱｸｼｮﾝで取得した特定idのﾃﾞｰﾀ-->
+  <span><%= link_to "Back", books_path(@book.id) %></span><!--一覧ページへ飛ぶ-->

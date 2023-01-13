@@ -1,10 +1,12 @@
 <p id="notice"><%= flash[:notice] %></p>
 
-<strong>Title:<%= @book.title %></strong><!--@bookはshowｱｸｼｮﾝで取得したidﾃﾞｰﾀ-->
-<strong>Body:<%= @book.body %></strong>
+<p><strong>Title:</strong><%= @book.title %></p><!--@bookはshowｱｸｼｮﾝで取得したidﾃﾞｰﾀ-->
+<p><strong>Body:</strong><%= @book.body %></p>
 
 
-<%= link_to "Edit", edit_book_path(@book.id) %><!--編集ﾍﾟｰｼﾞへ飛ぶ-->
+<span><%= link_to "Edit", edit_book_path(@book.id) %></span><!--編集ﾍﾟｰｼﾞへ飛ぶ-->
 <!--@bookは、showｱｸｼｮﾝで取得した特定idのデータ。そのidを指定して飛ぶ-->
 
-<%= link_to "Back", books_path(@book.id) %><!--一覧画面へ戻る-->
+
+<span><%= link_to "Back", books_path(@book.id) %></div></span><!--覧画面へ戻る-->
+<!--<a href="/books">Back</a>これ使った方が-->
