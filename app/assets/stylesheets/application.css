@@ -57,7 +57,6 @@ p{
 /*index一覧ページ*/
 /*表全体の設定*/
 table {
-    display: table;/*ブロックレベル要素のまま横並びになる*/
     border-collapse: separate;/*セルのボーダー表示形式セパレート*/
     border-spacing: 2px;      /*セパレートの幅*/
     box-sizing: border-box;
@@ -68,14 +67,12 @@ table {
 
 /*表のヘッダー大枠*/
 thead{
-  display: table-header-group;/*どういう意味？*/
   vertical-align: middle;/*縦方向の中央揃え*/
   border-color: inherit;/*親要素と同じgrey*/
 }
 
 /*表の行の設定*/
 tr{
-  display: table-row;/*どういう意味？*/
   vertical-align: inherit;/*中央揃え(縦方向)*/
   border-color: inherit;/*親要素と同じgrey*/
 }
@@ -91,7 +88,6 @@ th{
 
 /*表本体大枠*/
 tbody{
-  display: table-row-group;/*どういう意味？*/
   vertical-align: middle;
   border-color: inherit;
 }
@@ -134,14 +130,6 @@ h3{
   height: 100px;
 }
 
-
-
-
-/*show詳細ページと編集ﾍﾟｰｼﾞのリンク*/
-span:last-child{/*これ適用されないのなんで？*/
-  padding-inline-start: 2em;
-  border-left: 1px solid #555;;
-}
 
 
 /*ﾌﾗｯｼｭﾒｯｾｰｼ*/

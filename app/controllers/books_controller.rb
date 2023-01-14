@@ -45,15 +45,15 @@ class BooksController < ApplicationController
 
     #このbookは、Bookモデルから編集するidのデータを探す変数
     #更新ﾎﾞﾀﾝ押したら､更新したいidのﾃﾞｰﾀを取得
-    book = Book.find(params[:id])
+    @book = Book.find(params[:id])
 
-    if book.update(book_params)#上で取得したﾃﾞｰﾀを更新する
+    if @book.update(book_params)#上で取得したﾃﾞｰﾀを更新する
       #ﾃﾞｰﾀの存在がtrueであれば
        flash[:notice] = "Book was successfully updated."#ﾌﾗｯｼｭメッセージ
-      redirect_to book_path(book.id)#book_pathで詳細ページへ飛ぶ｡book.idで上で取得したデータと同じidを指定してる
+      redirect_to book_path(@book.id)#book_pathで詳細ページへ飛ぶ｡book.idで上で取得したデータと同じidを指定してる
 
     else #ﾃﾞｰﾀの存在falseなら
-    @book = Book.find(params[:id])#editｱｸｼｮﾝに飛ぶからeditｱｸｼｮﾝを定義しなおす
+    #editｱｸｼｮﾝに飛ぶけど、使うｲﾝｽﾀ変数はこのｱｸｼｮﾝ内と同じだからこれだけで良い
     render :edit#editページへリダイレクト
     end
 
